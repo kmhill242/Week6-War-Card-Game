@@ -93,6 +93,8 @@ const halfDeck = Math.ceil(deck.cardsInDeck / 2);
 playerOneDeck = (deck.cards.slice(0, halfDeck));
 playerTwoDeck = (deck.cards.slice(halfDeck, deck.cardsInDeck));
 //consolde.log(playerOneDeck);
+//console.log(playerTwoDeck);
+
 
 //this loop takes the two shuffled half of the deck and compares the number and values of each card
 //by calling the pop function each time it iterates. it also assigns each player a half of the deck which is needed to run the game
