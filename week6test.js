@@ -96,7 +96,16 @@ playerTwoDeck = (deck.cards.slice(halfDeck, deck.cardsInDeck));
 
 //this loop takes the two shuffled half of the deck and compares the number and values of each card
 //by calling the pop function each time it iterates. it also assigns each player a half of the deck which is needed to run the game
+//i had to create an add function so the loop will add one point per game won, instead of the card values, which is an issue i was running into.
+//I then would push the points value of 1 into the playerPoints array.
+function add(value) {
+    points += value;
+    if (value == 1) {
+        points = 1;
+    }
+}
 
+let points = 1
 for (let i = 0; i < 26; i++) {
     const playerOneCard = playerOneDeck.pop();
     const playerTwoCard = playerTwoDeck.pop();
@@ -108,15 +117,38 @@ for (let i = 0; i < 26; i++) {
     Round ${i} End
     `);
     if (cardValue[playerOneCard.values] > cardValue[playerTwoCard.values]) {
-        playerOnePoints.push(cardValue[playerTwoCard.values], cardValue[playerOneCard.values]);
+        playerOnePoints.push(points);
         console.log('Player One Wins');
     } else if (cardValue[playerTwoCard.values] > cardValue[playerOneCard.values]) {
-        playerTwoPoints.push(cardValue[playerTwoCard.values], cardValue[playerOneCard.values]);
+        playerTwoPoints.push(points);
         console.log('Player Two Wins');
     } else {
         console.log('Draw, No Points Awarded');
     }
 }
+
+
+
+// for (let i = 0; i < 26; i++) {
+//     const playerOneCard = playerOneDeck.pop();
+//     const playerTwoCard = playerTwoDeck.pop();
+//     console.log(`
+//     Round ${i} Start
+//     Player One's Card: ${cardValue[playerOneCard.values]}`);
+//     console.log(`
+//     Player Two's Card: ${cardValue[playerTwoCard.values]}
+//     Round ${i} End
+//     `);
+//     if (cardValue[playerOneCard.values] > cardValue[playerTwoCard.values]) {
+//         playerOnePoints.push(cardValue[playerTwoCard.values], cardValue[playerOneCard.values]);
+//         console.log('Player One Wins');
+//     } else if (cardValue[playerTwoCard.values] > cardValue[playerOneCard.values]) {
+//         playerTwoPoints.push(cardValue[playerTwoCard.values], cardValue[playerOneCard.values]);
+//         console.log('Player Two Wins');
+//     } else {
+//         console.log('Draw, No Points Awarded');
+//     }
+// }
 
 //trying to redo this loop to add a single point to the score instead of how i have it up above
 //where it adds the point values of the cards that are drawn
